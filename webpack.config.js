@@ -42,10 +42,10 @@ module.exports = {
             {
                 test: /vue-preview.src.*?js$/,
                 loader: 'babel-loader',
-                // options: {   建议使用.babelrc文件，在当前根目录就可以了
-                //     presets: ['es2015'], //关键字
-                //     plugins: ['transform-runtime'], //函数
-                // }
+                 options: {  // 建议使用.babelrc文件，在当前根目录就可以了
+                     presets: ['es2015'], //关键字
+                     plugins: ['transform-runtime'], //函数
+                 }
             },
             {
                 test: /\.vue$/,

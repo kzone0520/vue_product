@@ -15,9 +15,9 @@
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name:'news'}">
                         <span class="mui-icon news_icon"></span>
                         <div class="mui-media-body">新闻资讯</div></router-link></li>
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-                        <span class="mui-icon mui-icon-email"></span>
-                        <div class="mui-media-body">图文分享</div></a></li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'picture'}">
+                        <span class="mui-icon picture_icon"></span>
+                        <div class="mui-media-body">图片分享</div></router-link></li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                         <span class="mui-icon shi_icon"></span>
                         <div class="mui-media-body">诗词鉴赏</div></a></li>
@@ -118,5 +118,7 @@
     .shi_icon {
         background: url('../../static/img/shi.png') no-repeat;
     }
-    
+    .picture_icon {
+        background: url('../../static/img/picture.png') no-repeat;
+    }
 </style>
