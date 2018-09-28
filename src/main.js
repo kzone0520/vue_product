@@ -6,9 +6,11 @@ import VueRouter from 'vue-router';
 import Mint from 'mint-ui';
 import '../node_modules/mint-ui/lib/style.css';
 import './static/vendor/mui/dist/css/mui.css';
+import './static/vendor/mui/dist/css/mui.min.css';
 import Axios from 'axios';
 import Moment from 'moment';
 import VuePreview from 'vue-preview';
+
 
 // 导入自己的包
 import App from './app.vue';
@@ -20,6 +22,12 @@ import './static/css/global.css';
 import News from './components/news/news.vue';
 import NavBar from './components/common/navBar.vue';
 import Picture from './components/picture/picture.vue';
+import Funny from './components/funny/funny.vue';
+import Funny_random from './components/funny/funny_random.vue';
+import Funny_pic from './components/funny/funny_pic.vue';
+import Funny_word from './components/funny/funny_word.vue';
+import Funny_video from './components/funny/funny_video.vue';
+import PageVue from './components/common/page.vue';
 
 // 安装注册组件
 Vue.use(VueRouter);
@@ -29,16 +37,8 @@ Vue.component('navBar',NavBar);
 Vue.filter('convertData', function(input){
     return Moment(input).format('YYYY-MM-DD HH:mm:ss');
 });
-Vue.use(VuePreview, {
-  mainClass: 'pswp--minimal--dark',
-  barsSize: {top: 0, bottom: 0},
-  captionEl: false,
-  fullscreenEl: false,
-  shareEl: false,
-  bgOpacity: 0.85,
-  tapToClose: true,
-  tapToToggleControls: false
-})
+Vue.use(VuePreview);
+Vue.component('pageVue', PageVue);
 
 // 拦截器，给请求加loadi加图标
 Axios.interceptors.request.use(function(config){
@@ -59,6 +59,13 @@ let router = new VueRouter({
         { name: 'music', path: '/music', component: Music},
         { name: 'news', path: '/news', component: News},
        { name: 'picture', path: '/picture/', component: Picture},
+       { path: '/funny', redirect: {name: 'funny_random'}},
+       {name: 'funny', path: '/funny', component: Funny, children: [
+           {name: 'funny_random', path: 'funny_random', component: Funny_random},
+           {name: 'funny_pic', path: 'funny_pic', component: Funny_pic},
+           {name: 'funny_word', path: 'funny_word', component: Funny_word},
+           {name: 'funny_video', path: 'funny_video', component: Funny_video},
+       ]},
 
 
     ],

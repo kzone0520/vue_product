@@ -1,6 +1,6 @@
 <template>
     <div>
-        <mt-header title="生活助手"></mt-header>
+        <mt-header title="小麻雀助手"></mt-header>
         <router-view></router-view>
         <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item" :to="{name:'home'}">
