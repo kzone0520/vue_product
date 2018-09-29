@@ -6,13 +6,13 @@
                     &laquo;
                 </a>
             </li>
-            <li v-for="index in pageList" :key="index" >
+            <li v-for="index in pageList" :key="index" class="num">
                 <a >
                     {{index}}
                 </a>
             </li>
             
-            <li class="mui-next" >
+            <li  >
                 <a >
                     &raquo;
                 </a>
@@ -59,7 +59,7 @@
 </script>
 
 <style scoped >
-     #pageBar {
+    #pageBar {
         position: fixed;
         width: 350px;
 

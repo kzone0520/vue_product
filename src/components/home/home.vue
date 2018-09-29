@@ -33,7 +33,7 @@
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                         <span class="mui-icon mui-icon-gear"></span>
                         <div class="mui-media-body">Setting</div></a></li>
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'funny'}">
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'funny_word'}">
                         <span class="mui-icon mui-icon-info"></span>
                         <div class="mui-media-body">搞笑段子</div></router-link></li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">

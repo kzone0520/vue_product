@@ -11,7 +11,6 @@ import Axios from 'axios';
 import Moment from 'moment';
 import VuePreview from 'vue-preview';
 
-
 // 导入自己的包
 import App from './app.vue';
 import Home from './components/home/home.vue';
@@ -28,6 +27,7 @@ import Funny_pic from './components/funny/funny_pic.vue';
 import Funny_word from './components/funny/funny_word.vue';
 import Funny_video from './components/funny/funny_video.vue';
 import PageVue from './components/common/page.vue';
+import MusicDetail from './components/music/musicDetail.vue';
 
 // 安装注册组件
 Vue.use(VueRouter);
@@ -58,16 +58,14 @@ let router = new VueRouter({
         { name: 'shopcart', path: '/shopcart', component: Shopcart},
         { name: 'music', path: '/music', component: Music},
         { name: 'news', path: '/news', component: News},
-       { name: 'picture', path: '/picture/', component: Picture},
-       { path: '/funny', redirect: {name: 'funny_random'}},
-       {name: 'funny', path: '/funny', component: Funny, children: [
-           {name: 'funny_random', path: 'funny_random', component: Funny_random},
-           {name: 'funny_pic', path: 'funny_pic', component: Funny_pic},
-           {name: 'funny_word', path: 'funny_word', component: Funny_word},
-           {name: 'funny_video', path: 'funny_video', component: Funny_video},
-       ]},
-
-
+        { name: 'picture', path: '/picture/', component: Picture},
+        {name: 'funny', path: '/funny', component: Funny, children: [
+            {name: 'funny_random', path: 'funny_random', component: Funny_random},
+            {name: 'funny_pic', path: 'funny_pic', component: Funny_pic},
+            {name: 'funny_word', path: 'funny_word', component: Funny_word},
+            {name: 'funny_video', path: 'funny_video', component: Funny_video},
+        ]},
+        { name: 'musicDetail', path: '/music/musicDetail', component: MusicDetail},
     ],
     linkActiveClass: "mui-active",
 })
