@@ -7,31 +7,43 @@
 				<span class="mui-icon icon-shouye"></span>
 				<span class="mui-tab-label">首页</span>
 			</router-link>
+			
+			<router-link class="mui-tab-item" :to="{name:'shopcart'}">
+				<span class="mui-icon icon-gouwuche2"><span class="mui-badge">{{picknum}}</span></span>
+				<span class="mui-tab-label">购物车</span>
+			</router-link>
+			<!-- <router-link class="mui-tab-item" :to="{name:'music'}">
+				<span class="mui-icon icon-yinle"></span>
+				<span class="mui-tab-label">音乐</span>
+			</router-link> -->
 			<router-link class="mui-tab-item" :to="{name:'vip'}">
 				<span class="mui-icon icon-huiyuan"></span>
 				<span class="mui-tab-label">会员</span>
-			</router-link>
-			<router-link class="mui-tab-item" :to="{name:'shopcart'}">
-				<span class="mui-icon icon-gouwuche2"><span class="mui-badge">9</span></span>
-				<span class="mui-tab-label">购物车</span>
-			</router-link>
-			<router-link class="mui-tab-item" :to="{name:'music'}">
-				<span class="mui-icon icon-yinle"></span>
-				<span class="mui-tab-label">音乐</span>
 			</router-link>
 		</nav>
     </div>
 </template>
 <script>
+	import VueBus from './components/common/vueBus.js';
     export default {
         data(){
             return {
-
+				picknum: 0,
             }
         },
         methods: {
 
-        }
+		},
+		mounted(){
+			VueBus.$on('changenum', num=>{
+				this.picknum += num;
+			});
+			let storage = window.localStorage;
+			let obj = JSON.parse(storage.getItem('pords'));
+			Object.values(obj).forEach(ele=>{
+				this.picknum += parseInt(Object.values(ele));
+			})
+		}
         
     }
 </script>

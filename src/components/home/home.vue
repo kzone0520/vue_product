@@ -30,9 +30,9 @@
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                         <span class="mui-icon mui-icon-phone"></span>
                         <div class="mui-media-body">联系我们</div></a></li>
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name:'music'}">
                         <span class="mui-icon mui-icon-gear"></span>
-                        <div class="mui-media-body">Setting</div></a></li>
+                        <div class="mui-media-body">音乐商城</div></router-link></li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'funny_word'}">
                         <span class="mui-icon mui-icon-info"></span>
                         <div class="mui-media-body">搞笑段子</div></router-link></li>

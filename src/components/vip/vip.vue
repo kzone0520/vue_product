@@ -14,9 +14,7 @@
         <!-- 自动登入 -->
         <div class="auto">
             <span>自动登入</span>
-            <div class="mui-switch mui-active">
-                <div class="mui-switch-handle"></div>
-            </div>
+            <mt-switch class="switch"></mt-switch>
         </div>
         <mt-button class="btn" type="primary" size="large" @click="login">登录</mt-button>
         <div>
@@ -76,13 +74,12 @@ export default {
     .auto {
         margin-top: 18px;
         height: 50px;
-        position: relative;
         background: white;
     }
-    .mui-switch.mui-active {
-        position: absolute;
-        right: 10px;
-        top: 10px;
+    .auto .switch {
+        float: right;
+        margin-right: 10px;
+        margin-top: 10px;
     }
 
     .btn {
@@ -94,11 +91,6 @@ export default {
         text-align: center;
         margin: 0 auto;
     }
-
-
-
-
-
 
     .clear {zoom:1};
     .clear:after {
