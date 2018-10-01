@@ -30,7 +30,7 @@
         },
         methods: {
             getrandom(page){
-                this.$axios.get("https://www.apiopen.top/satinGodApi?type=41&page="+page).then(res=>{
+                this.$axios.get("https://www.apiopen.top/satinGodApi?type=1&page="+page).then(res=>{
                     this.randomList = res.data.data;
                 }).catch(err=>{
                     console.log(err)

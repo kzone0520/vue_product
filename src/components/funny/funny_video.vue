@@ -8,8 +8,8 @@
                     <span class="ctime" v-text="item.passtime"></span>
                 </div>
                 <h4 class="title" v-text="item.text"></h4>
-                <video src="item.video" v-if="item.type==='video'?true:false" controls="controls" ></video>
-                <img :src="item.gif" v-if="item.type==='gif'?true:false" alt="gif">
+                <video v-lazy="item.video" v-if="item.type==='video'?true:false" controls="controls" ></video>
+                <img v-lazy="item.gif" v-if="item.type==='gif'?true:false" alt="gif">
                 <hr>
             </li>
             
@@ -29,7 +29,7 @@
         },
         methods: {
             getVideo(page){
-                this.$axios.get('https://www.apiopen.top/satinGodApi?type=4&page='+page).then(res => {
+                this.$axios.get('https://www.apiopen.top/satinGodApi?type=5&page='+page).then(res => {
                     this.dataList = res.data.data;
                     this.dataList.forEach((ele, index) => {
                         if (ele.video === null){

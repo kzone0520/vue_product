@@ -19,7 +19,8 @@
         <mt-button class="btn" type="primary" size="large" @click="login">登录</mt-button>
         <div>
         <div class="opation">
-            <span><a href="#">注册账号</a></span>|<span><a href="#">忘记密码</a></span>
+            <span><a href="javascript:;" @click="login">注册账号</a></span>|
+            <span><a href="javascript:;" @click="login">忘记密码</a></span>
         </div>
         </div>
     </div>
