@@ -48,9 +48,6 @@ export default {
         margin-top: 10px;
         border-bottom: 1px solid gray;
     }
-    img {
-
-    }
     .song {
         width: 350px;
         display: flex;

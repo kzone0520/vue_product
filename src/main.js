@@ -31,6 +31,7 @@ import PageVue from './components/common/page.vue';
 import MusicDetail from './components/music/musicDetail.vue';
 import Weather from './components/weather/weather.vue'
 import Chat from './components/chat/chat.vue';
+import setting from './components/setting.vue';
 
 // 安装注册组件
 Vue.use(VueRouter);
@@ -42,11 +43,6 @@ Vue.filter('convertData', function(input){
 });
 Vue.use(VuePreview);
 Vue.component('pageVue', PageVue);
-Vue.use(VueLazyLoad, {
-    preLoad: 2,
-    error: require('./static/img/dahai.jpg'),
-    loading: require('./static/img/pubu.jpg')
-})
 
 // 拦截器，给请求加loadi加图标
 Axios.interceptors.request.use(function(config){
@@ -76,6 +72,7 @@ let router = new VueRouter({
         { name: 'musicDetail', path: '/music/musicDetail', component: MusicDetail},
         { name: 'weather', path:'/weather', component: Weather},
         { name: 'chat', path: '/chat', component: Chat},
+        { name: 'setting', path: '/setting', component: setting},
     ],
     linkActiveClass: "mui-active",
 })

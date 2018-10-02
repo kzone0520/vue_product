@@ -3,6 +3,7 @@
 } */
 .tmpl {
     margin-bottom: 50px;
+    overflow: hidden;
 }
 ul, li {
     margin: 0;

@@ -1,11 +1,14 @@
 <template>
-    <div>
+    <div class="tmpl">
 
         <!-- 轮播图 -->
-        <mt-swipe :auto="4000">
-            <mt-swipe-item ><img src="../../static/img/pubu.jpg"  alt="1"></mt-swipe-item>
-            <mt-swipe-item><img src="../../static/img/dahai.jpg"  alt="2"></mt-swipe-item>
-            <mt-swipe-item><img src="../../static/img/luori.jpg"  alt="3"></mt-swipe-item>
+        <mt-swipe >
+            <mt-swipe-item :auto="4000" v-for="(music, index) in musicList" :key="index">
+                <router-link :to="{name: 'musicDetail', query: {type: typeRandom, song_id: music.song_id}}">
+                    <img :src="music.album_500_500"  :alt="music.title">
+                </router-link>
+            </mt-swipe-item>
+            
         </mt-swipe>
 
         
@@ -18,70 +21,51 @@
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'picture'}">
                         <span class="mui-icon picture_icon"></span>
                         <div class="mui-media-body">图片分享</div></router-link></li>
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-                        <span class="mui-icon shi_icon"></span>
-                        <div class="mui-media-body">商品展示</div></a></li>
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'chat'}">
-                        <span class="mui-icon mui-icon-location"></span>
-                        <div class="mui-media-body">聊天</div></router-link></li>
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'weather'}">
-                        <span class="mui-icon mui-icon-search"></span>
-                        <div class="mui-media-body">天气查询</div></router-link></li>
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-                        <span class="mui-icon mui-icon-phone"></span>
-                        <div class="mui-media-body">联系我们</div></a></li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name:'music'}">
-                        <span class="mui-icon mui-icon-gear"></span>
+                        <span class="mui-icon music-icon"></span>
                         <div class="mui-media-body">音乐商城</div></router-link></li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'weather'}">
+                        <span class="mui-icon weather-icon"></span>
+                        <div class="mui-media-body">天气查询</div></router-link></li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'funny_word'}">
-                        <span class="mui-icon mui-icon-info"></span>
+                        <span class="mui-icon duanzi-icon"></span>
                         <div class="mui-media-body">搞笑段子</div></router-link></li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'chat'}">
+                        <span class="mui-icon chat-icon"></span>
+                        <div class="mui-media-body">AI聊天室</div></router-link></li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+                        <span class="mui-icon set-icon"></span>
+                        <div class="mui-media-body">设置</div></a></li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+                        <span class="mui-icon phone-icon"></span>
+                        <div class="mui-media-body">联系我们</div></a></li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                         <span class="mui-icon mui-icon-more"></span>
                         <div class="mui-media-body">more</div></a></li>
             </ul> 
 		</div> 
-
-        <!-- <input type="text" v-model="searchVal">
-        <button @click="search" >搜索</button><br/>
-        名字：<span v-text="name"></span><br/>
-        详细介绍： <span v-text="desc"></span>
-        <input type="button" v-show="isShow" value="查看更多" @click="getMore" />
-        <mt-button type="danger" size="large">danger</mt-button> -->
     </div>
 </template>
 <script>
     export default {
         data(){
             return {
-                
-                searchVal: '',
-                name: '',
-                desc: '',
-                moreDesc: '',
-                isShow: false,
+                typeList: [1,2,11,20,21,22,23,24,25,106],
+                typeRandom: '',
+                musicList: [],
             }
         },
         methods: {
-            search(){
-                this.$axios.get('http://api.apiopen.top/searchAuthors?name=' + this.searchVal)
-                .then(res => {
-                    this.name = res.data.result[0].name;
-                    this.desc = res.data.result[0].desc.slice(0, 250) + '...';
-                    this.moreDesc = res.data.result[0].desc;
-                })
-                .catch(err => {
-                    this.name = "无此人搜索结果，请重新输入";
-                    this.desc = '';
-                });
-                this.searchVal = '';
-            },
-            getMore(){
-                this.desc = this.moreDesc;
-                this.isShow = false;
-            }
+            
         },
         created() {
+            this.typeRandom = this.typeList[Math.floor(Math.random()*10)];
+            console.log('typeRandom:',this.typeRandom)
+            this.$axios.get("http://api.apiopen.top/musicRankingsDetails?type="+this.typeRandom).then(res=>{
+                this.musicList = res.data.result;
+            }).catch(err=>{
+                console.log(err)
+            })
             
         },
         watch: {
@@ -112,13 +96,36 @@
         height: 50px;
         width: 50px;
     }
+    
     .news_icon {
         background: url('../../static/img/news.png') no-repeat;
     }
-    .shi_icon {
-        background: url('../../static/img/shi.png') no-repeat;
+    .set-icon {
+        background: url('../../static/img/set.png') no-repeat;
     }
     .picture_icon {
         background: url('../../static/img/picture.png') no-repeat;
+    }
+    .weather-icon {
+        background: url('../../static/img/weather.png') no-repeat;
+    }
+    .music-icon {
+        background: url('../../static/img/music.png') no-repeat;
+    }
+    .duanzi-icon {
+        background: url('../../static/img/duanzi.png') no-repeat;
+    }
+    .phone-icon {
+        background: url('../../static/img/phone.png') no-repeat;
+    }
+    .chat-icon {
+        background: url('../../static/img/chat.png') no-repeat;
+    }
+    .mui-content {
+        height: 390px;
+        background: white;
+    }
+    .mui-table-view.mui-grid-view.mui-grid-9 {
+        padding-top: 20px;
     }
 </style>

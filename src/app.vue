@@ -1,5 +1,5 @@
-<template>
-    <div>
+<template style="width:375px;height:667px">
+    <div  >
         <mt-header title="小麻雀助手"></mt-header>
         <router-view></router-view>
         <nav class="mui-bar mui-bar-tab">
@@ -12,10 +12,6 @@
 				<span class="mui-icon icon-gouwuche2"><span class="mui-badge">{{picknum}}</span></span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
-			<!-- <router-link class="mui-tab-item" :to="{name:'music'}">
-				<span class="mui-icon icon-yinle"></span>
-				<span class="mui-tab-label">音乐</span>
-			</router-link> -->
 			<router-link class="mui-tab-item" :to="{name:'vip'}">
 				<span class="mui-icon icon-huiyuan"></span>
 				<span class="mui-tab-label">会员</span>
@@ -38,11 +34,14 @@
 			VueBus.$on('changenum', num=>{
 				this.picknum += num;
 			});
+			// 将localStorage里购物车的数据取出并计算件数
 			let storage = window.localStorage;
-			let obj = JSON.parse(storage.getItem('pords'));
-			Object.values(obj).forEach(ele=>{
-				this.picknum += parseInt(Object.values(ele));
-			})
+			if (storage.getItem('pords')){
+				let obj = JSON.parse(storage.getItem('pords'));
+				Object.values(obj).forEach(ele=>{
+					this.picknum += parseInt(Object.values(ele));
+				})
+			}
 		}
         
     }

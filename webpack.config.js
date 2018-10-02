@@ -22,6 +22,10 @@ module.exports = {
                 loader: 'style-loader!css-loader!autoprefixer-loader!less-loader'
             },
             {
+                test: /\.scss$/,
+                loader: 'style-loader!css-loader!autoprefixer-loader!sass-loader'
+            },
+            {
                 test: /\.(jpg|png|svg|ttf|woff|woff2|gif)$/,
                 loader: 'url-loader',
                 options: {

@@ -75,7 +75,7 @@
             }
         },
         created(){
-            this.search('kkk');
+            this.search('北京');
             this.month = new Date();
             this.month = this.month.getMonth() + 1;
         }

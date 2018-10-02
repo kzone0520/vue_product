@@ -28,18 +28,35 @@
                // this.getAns();
             },
             getAns(){
-                const params = new URLSearchParams();
-                params.append('key', 'free');
-                params.append('appid', '0');
-                params.append('msg', this.content);
 
-
-                this.$axios.post("http://api.qingyunke.com/api.php",params,{
-                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
+                var  params = JSON.stringify({
+                    "reqType":0,
+                    "perception": {
+                        "inputText": {
+                            "text": "附近的酒店"
+                        },
+                        "inputImage": {
+                            "url": "imageUrl"
+                        },
+                        "selfInfo": {
+                            "location": {
+                                "city": "北京",
+                                "province": "北京",
+                                "street": "信息路"
+                            }
+                        }
+                    },
+                    "userInfo": {
+                        "apiKey": "a05a941774fc4c5093b83eb4ca4f3bba",
+                        "userId": "001"
                     }
-                }).then(res=>{
-                    this.back += res.data.content;
+                })
+                this.$axios.post("http://openapi.tuling123.com/openapi/api/v2", params ,{
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+}).then(res=>{
+                    console.log(res)
                 }).catch(err=>{
                     console.log(err)
                 })
