@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": ".\\node_modules\\.bin\\webpack-dev-server --inline --hot --open --port 9997",
+    "dev": ".\\node_modules\\.bin\\webpack-dev-server --inline --hot --open --port 9991",
     "build": "webpack"
   },
   "keywords": [],
@@ -38,6 +38,7 @@
     "moment": "^2.18.1",
     "vue": "^2.5.17",
     "vue-preview": "^1.0.5",
-    "vue-router": "^2.7.0"
+    "vue-router": "^2.7.0",
+    "vue2-animate": "^2.1.0"
   }
 }

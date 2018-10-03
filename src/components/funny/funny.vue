@@ -5,7 +5,7 @@
             <router-link :to="{name: 'funny_random'}" >推荐</router-link>
             <router-link :to="{name: 'funny_word'}">段子</router-link>
             <router-link :to="{name: 'funny_pic'}" >图片</router-link>
-            <router-link :to="{name: 'funny_video'}" >视频/动图</router-link>
+            <router-link :to="{name: 'funny_video'}" >视频</router-link>
         </div>
         <router-view></router-view>
     </div>

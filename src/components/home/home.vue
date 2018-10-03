@@ -15,31 +15,31 @@
         <!-- 九宫格 -->
         <div class="mui-content">
             <ul class="mui-table-view mui-grid-view mui-grid-9">
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name:'news'}">
-                        <span class="mui-icon news_icon"></span>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 "><router-link :to="{name:'news'}">
+                        <span class="mui-icon news-icon rotate"></span>
                         <div class="mui-media-body">新闻资讯</div></router-link></li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'picture'}">
-                        <span class="mui-icon picture_icon"></span>
+                        <span class="mui-icon picture-icon rotate"></span>
                         <div class="mui-media-body">图片分享</div></router-link></li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name:'music'}">
-                        <span class="mui-icon music-icon"></span>
+                        <span class="mui-icon music-icon rotate"></span>
                         <div class="mui-media-body">音乐商城</div></router-link></li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'weather'}">
-                        <span class="mui-icon weather-icon"></span>
+                        <span class="mui-icon weather-icon rotate"></span>
                         <div class="mui-media-body">天气查询</div></router-link></li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'funny_word'}">
-                        <span class="mui-icon duanzi-icon"></span>
+                        <span class="mui-icon duanzi-icon rotate"></span>
                         <div class="mui-media-body">搞笑段子</div></router-link></li>
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'chat'}">
-                        <span class="mui-icon chat-icon"></span>
-                        <div class="mui-media-body">AI聊天室</div></router-link></li>
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-                        <span class="mui-icon set-icon"></span>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name:'contact'}">
+                        <span class="mui-icon phone-icon rotate"></span>
+                        <div class="mui-media-body">联系我们</div></router-link></li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a @click="tip">
+                        <span class="mui-icon chat-icon rotate"></span>
+                        <div class="mui-media-body">AI聊天室</div></a></li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a @click="tip">
+                        <span class="mui-icon set-icon rotate"></span>
                         <div class="mui-media-body">设置</div></a></li>
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-                        <span class="mui-icon phone-icon"></span>
-                        <div class="mui-media-body">联系我们</div></a></li>
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a @click="tip">
                         <span class="mui-icon mui-icon-more"></span>
                         <div class="mui-media-body">more</div></a></li>
             </ul> 
@@ -56,11 +56,16 @@
             }
         },
         methods: {
-            
+            tip(){
+                this.$toast({
+                    message: '暂未上线，敬请期待',
+                    position: 'middle',
+                    duration: 1000
+                });
+            }
         },
         created() {
             this.typeRandom = this.typeList[Math.floor(Math.random()*10)];
-            console.log('typeRandom:',this.typeRandom)
             this.$axios.get("http://api.apiopen.top/musicRankingsDetails?type="+this.typeRandom).then(res=>{
                 this.musicList = res.data.result;
             }).catch(err=>{
@@ -97,13 +102,13 @@
         width: 50px;
     }
     
-    .news_icon {
+    .news-icon {
         background: url('../../static/img/news.png') no-repeat;
     }
     .set-icon {
         background: url('../../static/img/set.png') no-repeat;
     }
-    .picture_icon {
+    .picture-icon {
         background: url('../../static/img/picture.png') no-repeat;
     }
     .weather-icon {
@@ -128,4 +133,13 @@
     .mui-table-view.mui-grid-view.mui-grid-9 {
         padding-top: 20px;
     }
+    .rotate {
+        transition: transform .3s;
+
+    }
+    .rotate:hover {
+        transform: rotate(360deg);
+    }
+
+  
 </style>

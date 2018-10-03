@@ -1,7 +1,7 @@
 <template>
-    <div class="tmpl" style="height: 557px">
+    <div class="tmpl">
         <nav-bar :title="title"></nav-bar>
-        <mt-loadmore class="tmpl" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore" :auto-fill="isAutoFill" >
+        <mt-loadmore class="mian" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore" :auto-fill="isAutoFill" >
             <ul class="mui-table-view">
                 <li class="mui-table-view-cell mui-media" v-for="(news, index) in newsList" :key="index">
                     <a :href="news.link">
@@ -40,13 +40,13 @@
                 this.$refs.loadmore.onBottomLoaded();
             },
             showMore(){
-                (this.$axios.get("https://www.apiopen.top/journalismApi").then(res => {
+                this.$axios.get("https://www.apiopen.top/journalismApi").then(res => {
                     this.moreNewsTitle = Object.keys(res.data.data);
                     this.newsList = this.newsList.concat(res.data.data[this.moreNewsTitle[this.page]]);
                     console.log(this.page,this.moreNewsTitle[this.page])
                 }).catch(err => {
                     console.log(err)
-                }))        
+                })        
             },
 
         },
@@ -60,5 +60,15 @@
     .mui-media-body span {
         color: #0094ff;
         font-size: 12px;
+    }
+    .tmpl {
+        height: 557px;
+        overflow: visible;
+    }
+    .mian {
+        margin-bottom: 50px;
+    }
+    .mui-media {
+        height: 66px;
     }
 </style>

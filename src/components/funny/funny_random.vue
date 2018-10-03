@@ -9,7 +9,7 @@
                 </div>
                 <h4 v-if="item.type!='text'?true:false">{{item.text}}</h4>
                 <img class="pic" v-lazy="item.image" alt="image" v-if="item.type==='image'?true:false">
-                <video src="item.video" v-if="item.type==='video'?true:false" controls="controls" ></video>
+                <video :src="item.video" v-if="item.type==='video'?true:false" controls="controls" ></video>
                 <img class="gif" v-lazy="item.gif" v-if="item.type==='gif'?true:false" alt="gif">
                 <p v-if="item.type==='text'?true:false">{{item.text}}</p>
                 <hr>

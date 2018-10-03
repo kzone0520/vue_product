@@ -60,7 +60,11 @@ export default {
             this.musicList.splice(i, 1); // 这行代码需要放到上两行代码之后，否则删除后找不到musicList[i]这个对象
         },
         settlement(){
-            this.$toast('暂不支持此功能');
+            this.$toast({
+                    message: '暂不支持此功能',
+                    position: 'middle',
+                    duration: 1000
+                });
         }
     },
     created() {

@@ -35,11 +35,15 @@ export default {
     },
     methods: {
         login(){
-            this.$toast('暂时无法使用会员功能');
+            this.$toast({
+                    message: '暂不支持会员功能',
+                    position: 'middle',
+                    duration: 1000
+                });
         }
     },
     mounted(){
-        this.$toast('暂时无法使用会员功能');
+        this.login();
     }
 }
 </script>

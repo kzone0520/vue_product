@@ -8,7 +8,7 @@
                     <span class="ctime" v-text="item.passtime"></span>
                 </div>
                 <h4 class="title" v-text="item.text"></h4>
-                <video v-lazy="item.video" v-if="item.type==='video'?true:false" controls="controls" ></video>
+                <video :src="item.video" v-if="item.type==='video'?true:false" controls="controls" ></video>
                 <img v-lazy="item.gif" v-if="item.type==='gif'?true:false" alt="gif">
                 <hr>
             </li>

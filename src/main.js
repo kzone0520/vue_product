@@ -3,54 +3,81 @@
 // 导入第三方包
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Mint from 'mint-ui';
-import '../node_modules/mint-ui/lib/style.css';
-import './static/vendor/mui/dist/css/mui.css';
-import './static/vendor/mui/dist/css/mui.min.css';
 import Axios from 'axios';
 import Moment from 'moment';
 import VuePreview from 'vue-preview';
-import VueLazyLoad from 'vue-lazyload';
+
+// 引入样式
+import '../node_modules/mint-ui/lib/style.css';
+import './static/vendor/mui/dist/css/mui.css';
+import './static/vendor/mui/dist/css/mui.min.css';
+import './static/css/global.css';
+import 'vue2-animate/dist/vue2-animate.min.css';
+
+// mint-ui 按需引入 开始
+import Header from 'mint-ui/lib/header';
+import Switch from 'mint-ui/lib/switch';
+import Swipe from 'mint-ui/lib/swipe';
+import SwipeItem from 'mint-ui/lib/swipe-item';
+import Lazyload from 'mint-ui/lib/lazyload';
+import Loadmore from 'mint-ui/lib/loadmore';
+import Indicator from 'mint-ui/lib/indicator';
+import Button from 'mint-ui/lib/button';
+import Toast from 'mint-ui/lib/toast';
+Vue.component(Header.name, Header);
+Vue.component(Switch.name, Switch);
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Loadmore.name, Loadmore);
+Vue.component(Button.name, Button);
+// 踩坑之路啊！！！按官方文档 import 之后直接可以在组件中Toast("msg")，是错误的！！！
+// 网上找的解决方法是 this.$toast("msg")，在全部引入mint-ui情况下是没问题的。
+// 但是如果按需引入的话就必须写下面这句话 将它加到Vue的原型链上！！！
+Vue.prototype.$toast = Toast;
+Vue.use(Lazyload);
+// mint-ui 按需引入 结束
+
 
 // 导入自己的包
 import App from './app.vue';
-import Home from './components/home/home.vue';
-import Vip from './components/vip/vip.vue';
-import Shopcart from './components/shopcart/shopcart.vue';
-import Music from './components/music/music.vue';
-import './static/css/global.css';
-import News from './components/news/news.vue';
+//按需加载
+// const Foo = resolve => require(['./Foo.vue'], resolve)
+const Home = resolve =>require([ './components/home/home.vue'], resolve);
+const Vip = resolve =>require([ './components/vip/vip.vue'], resolve);
+const Shopcart = resolve =>require([ './components/shopcart/shopcart.vue'], resolve);
+const Music = resolve =>require([ './components/music/music.vue'], resolve);
+const News = resolve =>require([ './components/news/news.vue'], resolve);
+const Picture = resolve =>require([ './components/picture/picture.vue'], resolve);
+const Funny = resolve =>require([ './components/funny/funny.vue'], resolve);
+const Funny_random = resolve =>require([ './components/funny/funny_random.vue'], resolve);
+const Funny_pic = resolve =>require([ './components/funny/funny_pic.vue'], resolve);
+const Funny_word = resolve =>require([ './components/funny/funny_word.vue'], resolve);
+const Funny_video = resolve =>require([ './components/funny/funny_video.vue'], resolve);
+const MusicDetail = resolve =>require([ './components/music/musicDetail.vue'], resolve);
+const Weather = resolve =>require([ './components/weather/weather.vue'], resolve);
+const Contact = resolve =>require([ './components/contact/contact.vue'], resolve);
+const setting = resolve =>require([ './components/setting.vue'], resolve);
+//引入全局组件需要的组件对象 
 import NavBar from './components/common/navBar.vue';
-import Picture from './components/picture/picture.vue';
-import Funny from './components/funny/funny.vue';
-import Funny_random from './components/funny/funny_random.vue';
-import Funny_pic from './components/funny/funny_pic.vue';
-import Funny_word from './components/funny/funny_word.vue';
-import Funny_video from './components/funny/funny_video.vue';
 import PageVue from './components/common/page.vue';
-import MusicDetail from './components/music/musicDetail.vue';
-import Weather from './components/weather/weather.vue'
-import Chat from './components/chat/chat.vue';
-import setting from './components/setting.vue';
 
 // 安装注册组件
 Vue.use(VueRouter);
-Vue.use(Mint);
 Vue.prototype.$axios = Axios;
-Vue.component('navBar',NavBar);
 Vue.filter('convertData', function(input){
     return Moment(input).format('YYYY-MM-DD HH:mm:ss');
 });
 Vue.use(VuePreview);
+Vue.component('navBar',NavBar);
 Vue.component('pageVue', PageVue);
 
-// 拦截器，给请求加loadi加图标
+// 拦截器，给请求加loadding加图标
 Axios.interceptors.request.use(function(config){
-    Mint.Indicator.open();
+    Indicator.open();
     return config;
 });
 Axios.interceptors.response.use(function(config){
-    Mint.Indicator.close();
+    Indicator.close();
     return config;
 });
 
@@ -71,7 +98,7 @@ let router = new VueRouter({
         ]},
         { name: 'musicDetail', path: '/music/musicDetail', component: MusicDetail},
         { name: 'weather', path:'/weather', component: Weather},
-        { name: 'chat', path: '/chat', component: Chat},
+        { name: 'contact', path: '/contact', component: Contact},
         { name: 'setting', path: '/setting', component: setting},
     ],
     linkActiveClass: "mui-active",

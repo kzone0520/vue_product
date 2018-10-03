@@ -1,7 +1,9 @@
-<template style="width:375px;height:667px">
+<template>
     <div  >
         <mt-header title="小麻雀助手"></mt-header>
-        <router-view></router-view>
+		<transition name="zoom" mode="out-in" >
+        	<router-view style="animation-duration: 0.3s"></router-view>
+		</transition>
         <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item" :to="{name:'home'}">
 				<span class="mui-icon icon-shouye"></span>
@@ -47,5 +49,5 @@
     }
 </script>
 <style scoped>
-    
+
 </style>
