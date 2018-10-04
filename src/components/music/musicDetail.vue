@@ -66,7 +66,7 @@
             },
             buynow(){
                 this.$toast('暂不支持此功能');
-            },
+            },  
             addShopcart(){
                 VueBus.$emit('changenum',this.num);
                 pordsTools.save(this.songDetail, this.num);
@@ -92,10 +92,9 @@
              afterEnter(){
                  this.isShow = false;
              }
-
         },
         created() {
-            this.type = this.$route.query.type;
+            /* this.type = this.$route.query.type;
             this.song_id = this.$route.query.song_id;
             this.$axios.get("http://api.apiopen.top/musicRankingsDetails?type="+this.type).then(res=>{
                 res.data.result.forEach(item => {
@@ -108,7 +107,25 @@
                 });
             }).catch(err=>{
                 console.log(err)
-            })
+            }) */
+
+            this.type = this.$route.query.type;
+            this.song_id = this.$route.query.song_id;
+            this.$http.jsonp('https://query.yahooapis.com/v1/public/yql',{
+                params: {
+                    q: "select * from json where url=\"http://api.apiopen.top/musicRankingsDetails?type="+this.type+"\" ",
+                    format: "json"
+                }
+            }).then(res=>{
+                res.body.query.results.json.result.forEach(item => {
+                    if (this.song_id === item.song_id){
+                        this.songDetail = item;
+                        // 将类别挂载到songDetail对象上，方便存储localStorage
+                        this.$set(this.songDetail,'type', this.type)
+                        return;
+                    }
+                });
+            },response => { console.log("发送失败"+response.status)});
         },
     }
 </script>
