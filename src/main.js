@@ -6,6 +6,7 @@ import VueRouter from 'vue-router';
 import Axios from 'axios';
 import Moment from 'moment';
 import VuePreview from 'vue-preview';
+import VueResource from 'vue-resource';
 
 // 引入样式
 import '../node_modules/mint-ui/lib/style.css';
@@ -70,6 +71,7 @@ Vue.filter('convertData', function(input){
 Vue.use(VuePreview);
 Vue.component('navBar',NavBar);
 Vue.component('pageVue', PageVue);
+Vue.use(VueResource);
 
 // 拦截器，给请求加loadding加图标
 Axios.interceptors.request.use(function(config){

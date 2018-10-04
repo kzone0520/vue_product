@@ -62,16 +62,27 @@
                     position: 'middle',
                     duration: 1000
                 });
+            },
+            getJsonp(url, data){
+                this.$http.jsonp('http://query.yahooapis.com/v1/public/yql',{
+                    params: {
+                        q: "select * from json where url=\""+url+"\" ",
+                        format: "json"
+                    }
+                }).then(res=>{
+                    this.musicList = res.body.query.results.json.result;
+                },response => { console.log("发送失败"+response.status)});
             }
         },
         created() {
-            this.typeRandom = this.typeList[Math.floor(Math.random()*10)];
-            this.$axios.get("http://api.apiopen.top/musicRankingsDetails?type="+this.typeRandom).then(res=>{
-                this.musicList = res.data.result;
-            }).catch(err=>{
-                console.log(err)
-            })
-            
+             this.typeRandom = this.typeList[Math.floor(Math.random()*10)];
+            // this.$axios.get("http://api.apiopen.top/musicRankingsDetails?type="+this.typeRandom).then(res=>{
+            //     this.musicList = res.data.result;
+            // }).catch(err=>{
+            //     console.log(err)
+            // })
+            let url = "http://api.apiopen.top/musicRankingsDetails?type="+this.typeRandom;
+            this.getJsonp(url);
         },
         watch: {
             desc: function(val, oldVal){
