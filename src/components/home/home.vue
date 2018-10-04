@@ -77,6 +77,7 @@
         },
         created() {
             this.typeRandom = this.typeList[Math.floor(Math.random()*10)];
+            // 因为api为http所以在https上请求需要跨域
             // axios跨域需要用到脚手架vue-cli，此项目中未用 所以改用vue-resource的jsonp方法
             // this.$axios.get("http://api.apiopen.top/musicRankingsDetails?type="+this.typeRandom).then(res=>{
             //     this.musicList = res.data.result;

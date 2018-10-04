@@ -72,8 +72,29 @@ export default {
         let obj = JSON.parse(storage.getItem('pords'));
         if (!obj) return; 
         for ( let type of Object.keys(obj) ){
-            this.$axios.get('http://api.apiopen.top/musicRankingsDetails?type='+type).then(res=>{
-                for (let item of res.data.result ){
+            // axios跨域需要用到脚手架vue-cli，此项目中未用 所以改用vue-resource的jsonp方法
+            this.$http.jsonp('https://query.yahooapis.com/v1/public/yql',{
+                params: {
+                    q: "select * from json where url=\"http://api.apiopen.top/musicRankingsDetails?type="+type+"\" ",
+                    format: "json"
+                }
+            }).then(res=>{
+                for (let item of res.body.query.results.json.result ){
+                    if (Object.keys(obj[type]).indexOf(item.song_id) >= 0 ){
+                        // 在每个音乐详情对象上挂载一个商品数量num的属性，这个值从localStorage中获取
+                        // item.num = obj[type][item.song_id];
+                        // item.isPick = true;
+                        // 但是这种方法在Vue中无法双向绑定，改用 $set
+                        this.$set(item, 'num', obj[type][item.song_id]);
+                        this.$set(item, 'isPick', true);
+                        this.$set(item, 'type', type);
+                        this.musicList.push(item);
+                    }
+                }
+            },response => { console.log("发送失败"+response.status)});
+
+            /* this.$axios.get('http://api.apiopen.top/musicRankingsDetails?type='+type).then(res=>{
+                for (let item of res.body.query.results.json.result ){
                     if (Object.keys(obj[type]).indexOf(item.song_id) >= 0 ){
                         // 在每个音乐详情对象上挂载一个商品数量num的属性，这个值从localStorage中获取
                         // item.num = obj[type][item.song_id];
@@ -87,7 +108,7 @@ export default {
                 }
             }).catch(err=>{
                 console.log(err);
-            })
+            }) */
         }
     },
     computed: {

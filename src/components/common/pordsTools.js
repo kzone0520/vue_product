@@ -2,7 +2,7 @@
 // 将对localStorage的操作封装(不同的api函数内部逻辑有所不同)
 var pordsTools = {};
 pordsTools.save = function(pordObj,num){
-    let storage = window.localStorage;
+    let storage = localStorage;
     // 从本地中获取信息或者为空对象
     let obj = JSON.parse(storage.getItem('pords') || '{}');
     // 判断这个分类是否存在 （存储分类是为了在购物车里方便获取商品）
@@ -21,7 +21,7 @@ pordsTools.save = function(pordObj,num){
 };
 
 pordsTools.del = function(pordObj){
-    let storage = window.localStorage;
+    let storage = localStorage;
     let obj = JSON.parse(storage.getItem('pords') || '{}');
     // 根据song_id删除数据
     delete obj[pordObj.type][pordObj.song_id];

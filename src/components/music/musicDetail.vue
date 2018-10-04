@@ -71,7 +71,7 @@
                 VueBus.$emit('changenum',this.num);
                 pordsTools.save(this.songDetail, this.num);
                 /* // 将对localStorage的操作封装成pordsTool里的函数
-                let storage = window.localStorage;
+                let storage = localStorage;
                 // 从本地中获取信息或者为空对象
                 let obj = JSON.parse(storage.getItem('pords') || '{}');
                 // 判断这个分类是否存在 （存储分类是为了在购物车里方便获取商品）
