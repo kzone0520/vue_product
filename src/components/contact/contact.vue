@@ -13,7 +13,9 @@
                 title: 'WeChat',
                 msg: '',
                 code : `let arr = [8, 2, 1, 0, 5, 6],
-    index = [2, 0, 5, 2, 3, 2, 1, 3, 4, 1, 3],
+    index = [
+        2, 0, 5, 2, 3, 2, 1, 3, 4, 1, 3
+    ],
     tel = '';
 index.forEach(element => {
     tel += arr[element]
