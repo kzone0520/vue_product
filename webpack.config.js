@@ -9,7 +9,7 @@ module.exports = {
     },
     output: {
         //所有产出资源路径
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, 'dist_test'),
         filename: 'build.js'
     },
     module: {
