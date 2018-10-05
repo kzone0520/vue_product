@@ -42,22 +42,22 @@ Vue.use(Lazyload);
 // 导入自己的包
 import App from './app.vue';
 //按需加载
-// const Foo = resolve => require(['./Foo.vue'], resolve)
-const Home = resolve =>require([ './components/home/home.vue'], resolve);
-const Vip = resolve =>require([ './components/vip/vip.vue'], resolve);
-const Shopcart = resolve =>require([ './components/shopcart/shopcart.vue'], resolve);
-const Music = resolve =>require([ './components/music/music.vue'], resolve);
-const News = resolve =>require([ './components/news/news.vue'], resolve);
-const Picture = resolve =>require([ './components/picture/picture.vue'], resolve);
-const Funny = resolve =>require([ './components/funny/funny.vue'], resolve);
-const Funny_random = resolve =>require([ './components/funny/funny_random.vue'], resolve);
-const Funny_pic = resolve =>require([ './components/funny/funny_pic.vue'], resolve);
-const Funny_word = resolve =>require([ './components/funny/funny_word.vue'], resolve);
-const Funny_video = resolve =>require([ './components/funny/funny_video.vue'], resolve);
-const MusicDetail = resolve =>require([ './components/music/musicDetail.vue'], resolve);
-const Weather = resolve =>require([ './components/weather/weather.vue'], resolve);
-const Contact = resolve =>require([ './components/contact/contact.vue'], resolve);
-const setting = resolve =>require([ './components/setting.vue'], resolve);
+const Home = resolve => require([ './components/home/home.vue'], resolve);
+const Vip = resolve => require([ './components/vip/vip.vue'], resolve);
+const Shopcart = resolve => require([ './components/shopcart/shopcart.vue'], resolve);
+const Music = resolve => require([ './components/music/music.vue'], resolve);
+const News = resolve => require([ './components/news/news.vue'], resolve);
+const Picture = resolve => require([ './components/picture/picture.vue'], resolve);
+const Funny = resolve => require([ './components/funny/funny.vue'], resolve);
+const Funny_random = resolve => require([ './components/funny/funny_random.vue'], resolve);
+const Funny_pic = resolve => require([ './components/funny/funny_pic.vue'], resolve);
+const Funny_word = resolve => require([ './components/funny/funny_word.vue'], resolve);
+const Funny_video = resolve => require([ './components/funny/funny_video.vue'], resolve);
+const MusicDetail = resolve => require([ './components/music/musicDetail.vue'], resolve);
+const Weather = resolve => require([ './components/weather/weather.vue'], resolve);
+const Contact = resolve => require([ './components/contact/contact.vue'], resolve);
+const setting = resolve => require([ './components/setting.vue'], resolve);
+const Chat = resolve => require([ './components/chat/chat.vue'], resolve);
 //引入全局组件需要的组件对象 
 import NavBar from './components/common/navBar.vue';
 import PageVue from './components/common/page.vue';
