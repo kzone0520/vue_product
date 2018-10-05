@@ -42,7 +42,7 @@
         },
         methods: {
             send(e){
-                if (this.question == "") return;
+                if (!this.question) return;
                 let keynum = window.e?e.keyCode: e.which;
                 switch(keynum){
                     case 13:
@@ -54,12 +54,13 @@
                 }
             },
             getAns(){
+                if (!this.question) return;
                 this.talkArr.push({
-                            'type': 'Q',
-                            'msg': this.question,
-                            'time': new Date(),
-                            'identity': 'human',
-                        });
+                    'type': 'Q',
+                    'msg': this.question,
+                    'time': new Date(),
+                    'identity': 'human',
+                });
                 this.wait = true;
                 // 这里设置个定时器是为了先让数据加载到页面，然后在改变滚动条。否则，文字框会下沉一部分。
                 setTimeout(()=>{
@@ -143,14 +144,17 @@
         left: 0;
         display: flex;
         width: 100%;
+        height: 40px;
     }
     input{
         margin: 0;
+        height: 41px;
     }
     .wrap {
         height: 537px;
         overflow-y: scroll;
         background: white;
+        margin-bottom: 90px;
     }
     .clear::after {
         content: '';
