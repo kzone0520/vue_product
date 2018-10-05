@@ -1,6 +1,6 @@
 <template>
     <div  >
-        <mt-header title="小麻雀助手"></mt-header>
+        <mt-header title="小麻雀"></mt-header>
 		<transition name="zoom" mode="out-in" >
         	<router-view style="animation-duration: 0.3s"></router-view>
 		</transition>

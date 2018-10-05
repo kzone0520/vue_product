@@ -13,7 +13,7 @@ module.exports = {
     entry: {
         main: './src/main.js',
         //再加一个入口
-        vendors:['vue','vue-router','moment','axios','vue-preview'],
+        vendors:['vue','vue-router','moment','axios','vue-preview','vue-resource'],
     },
     output: {
         //所有产出资源路径

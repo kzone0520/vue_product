@@ -30,12 +30,12 @@
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'funny_word'}">
                         <span class="mui-icon duanzi-icon rotate"></span>
                         <div class="mui-media-body">搞笑段子</div></router-link></li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name: 'chat'}">
+                        <span class="mui-icon chat-icon rotate"></span>
+                        <div class="mui-media-body">AI聊天室</div></router-link></li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link :to="{name:'contact'}">
                         <span class="mui-icon phone-icon rotate"></span>
                         <div class="mui-media-body">联系我们</div></router-link></li>
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a @click="tip">
-                        <span class="mui-icon chat-icon rotate"></span>
-                        <div class="mui-media-body">AI聊天室</div></a></li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a @click="tip">
                         <span class="mui-icon set-icon rotate"></span>
                         <div class="mui-media-body">设置</div></a></li>
@@ -63,7 +63,6 @@
                     duration: 1000
                 });
             },
-            // vue-resource的跨域jsonp方法
             getJsonp(url, data){
                 this.$http.jsonp('https://query.yahooapis.com/v1/public/yql',{
                     params: {
@@ -76,9 +75,7 @@
             }
         },
         created() {
-            this.typeRandom = this.typeList[Math.floor(Math.random()*10)];
-            // 因为api为http所以在https上请求需要跨域
-            // axios跨域需要用到脚手架vue-cli，此项目中未用 所以改用vue-resource的jsonp方法
+             this.typeRandom = this.typeList[Math.floor(Math.random()*10)];
             // this.$axios.get("http://api.apiopen.top/musicRankingsDetails?type="+this.typeRandom).then(res=>{
             //     this.musicList = res.data.result;
             // }).catch(err=>{
@@ -141,7 +138,7 @@
         background: url('../../static/img/chat.png') no-repeat;
     }
     .mui-content {
-        height: 390px;
+        height: calc( 100% - 277px );
         background: white;
     }
     .mui-table-view.mui-grid-view.mui-grid-9 {

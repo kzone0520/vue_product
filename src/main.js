@@ -65,6 +65,7 @@ import PageVue from './components/common/page.vue';
 // 安装注册组件
 Vue.use(VueRouter);
 Vue.prototype.$axios = Axios;
+// 过滤器
 Vue.filter('convertData', function(input){
     return Moment(input).format('YYYY-MM-DD HH:mm:ss');
 });
