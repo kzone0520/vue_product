@@ -103,6 +103,7 @@ let router = new VueRouter({
         { name: 'weather', path:'/weather', component: Weather},
         { name: 'contact', path: '/contact', component: Contact},
         { name: 'setting', path: '/setting', component: setting},
+        { name: 'chat', path: '/chat', component: Chat },
     ],
     linkActiveClass: "mui-active",
 })

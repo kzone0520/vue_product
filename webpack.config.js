@@ -45,7 +45,7 @@ module.exports = {
                 loader: 'style-loader!css-loader!autoprefixer-loader!sass-loader'
             },
             {
-                test: /\.(jpg|png|svg|ttf|woff|woff2|gif)$/,
+                test: /\.(jpg|png|svg|ttf|woff|woff2|gif|ico)$/,
                 loader: 'url-loader',
                 options: {
                     limit: 4096, //4096字节以上生成文件，否则base6
