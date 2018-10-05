@@ -66,7 +66,7 @@
                 // 这里设置个定时器是为了先让数据加载到页面，然后在改变滚动条。否则，文字框会下沉一部分。
                 setTimeout(()=>{
                     this.$refs.abc.scrollTop = this.$refs.abc.scrollHeight;
-                },0)
+                },200)
 
                 console.log('正在获取回答...')
                 this.$http.jsonp('https://query.yahooapis.com/v1/public/yql',{
@@ -165,7 +165,7 @@
     .wait {
         height: 50px;
         border: none;
-        margin-left: 50px;
+        margin-left: 20px;
     }
     li {
         position: relative;

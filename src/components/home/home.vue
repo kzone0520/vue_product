@@ -137,7 +137,7 @@
         background: url('../../static/img/chat.png') no-repeat;
     }
     .mui-content {
-        height: calc( 100% - 277px);
+        height: 390px;
         background: white;
         overflow: scroll;
     }
