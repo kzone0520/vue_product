@@ -42,7 +42,7 @@
         },
         methods: {
             send(e){
-                if (this.question.trim() == "") return;
+                if (this.question == "") return;
                 let keynum = window.e?e.keyCode: e.which;
                 switch(keynum){
                     case 13:
@@ -133,7 +133,7 @@
         border-radius: 16px;
     }
     ul>li span {
-        font-size: 8px;
+        font-size: 10px;
         color: gray;
     }
     .inp {
@@ -148,7 +148,7 @@
         margin: 0;
     }
     .wrap {
-        height: calc( 100% - 130px);
+        height: 537px;
         overflow-y: scroll;
         background: white;
     }

@@ -11,7 +11,6 @@
             
         </mt-swipe>
 
-        
         <!-- 九宫格 -->
         <div class="mui-content">
             <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -138,7 +137,7 @@
         background: url('../../static/img/chat.png') no-repeat;
     }
     .mui-content {
-        height: calc( 100% - 277px );
+        height: 390px;
         background: white;
     }
     .mui-table-view.mui-grid-view.mui-grid-9 {
