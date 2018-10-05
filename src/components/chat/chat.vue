@@ -37,7 +37,6 @@
             // 这里设置个定时器是为了先让数据加载到页面，然后在改变滚动条。否则，文字框会下沉一部分。
             setTimeout(()=>{
                 this.$refs.abc.scrollTop = this.$refs.abc.scrollHeight;
-                console.log('我',this.$refs.abc.scrollTop, this.$refs.abc.scrollHeight)
             },0)
         },
         methods: {
@@ -65,7 +64,6 @@
                 // 这里设置个定时器是为了先让数据加载到页面，然后在改变滚动条。否则，文字框会下沉一部分。
                 setTimeout(()=>{
                     this.$refs.abc.scrollTop = this.$refs.abc.scrollHeight;
-                    console.log('我',this.$refs.abc.scrollTop, this.$refs.abc.scrollHeight)
                 },0)
 
                 console.log('正在获取回答...')
@@ -95,7 +93,8 @@
                         this.$refs.abc.scrollTop = this.$refs.abc.scrollHeight;
                     },0)
                     var storage = localStorage;
-                    storage.setItem('talk',JSON.stringify(this.talkArr))
+                    storage.setItem('talk',JSON.stringify(this.talkArr));
+                    console.log('回答完毕！！')
                 },response => { 
                     console.log("发送失败"+response.status)
                 });
@@ -151,7 +150,7 @@
         height: 41px;
     }
     .wrap {
-        height: 537px;
+        height: calc( 100% - 130px);
         overflow-y: scroll;
         background: white;
         margin-bottom: 90px;
