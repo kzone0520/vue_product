@@ -1,18 +1,20 @@
 <template>
-    <div class="wrap"  ref="abc">
-        <ul>
-            <li v-for="(info, index) in talkArr" class="clear" :key="index" >
-                <!-- 头像 -->
-                <div :class="info.identity " ></div>
-                <!-- 时间和内容 -->
-                <div :class="info.type">
-                    <span>{{info.time | convertData('YYYY-MM-DD HH:mm:ss')}}</span><br>
-                    <p>{{info.msg}}</p>
-                </div>
-            </li>
-            <!-- 等待回复 -->
-            <img v-if="wait" class="wait" src="../../static/img/loadding1.gif" height="30">
-        </ul>
+    <div>
+        <div class="wrap"  ref="abc">
+            <ul>
+                <li v-for="(info, index) in talkArr" class="clear" :key="index" >
+                    <!-- 头像 -->
+                    <div :class="info.identity " ></div>
+                    <!-- 时间和内容 -->
+                    <div :class="info.type">
+                        <span>{{info.time | convertData('YYYY-MM-DD HH:mm:ss')}}</span><br>
+                        <p>{{info.msg}}</p>
+                    </div>
+                </li>
+                <!-- 等待回复 -->
+                <img v-if="wait" class="wait" src="../../static/img/loadding1.gif" height="30">
+            </ul>
+        </div>
         <!-- 输入框 -->
         <div class="inp">
             <input type="text" v-model="question" @keydown="send($event)">
@@ -64,7 +66,7 @@
                 // 这里设置个定时器是为了先让数据加载到页面，然后在改变滚动条。否则，文字框会下沉一部分。
                 setTimeout(()=>{
                     this.$refs.abc.scrollTop = this.$refs.abc.scrollHeight;
-                },0)
+                },200)
 
                 console.log('正在获取回答...')
                 this.$http.jsonp('https://query.yahooapis.com/v1/public/yql',{
